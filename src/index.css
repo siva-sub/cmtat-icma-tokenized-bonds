@@ -1,0 +1,155 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap');
+
+:root {
+    --bg-color: #0F172A;
+    --panel-bg: #1E293B;
+    --border-color: #334155;
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+    --accent-blue: #0d7ff2;
+    --accent-green: #0df20d;
+    --accent-red: #f20d59;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* Neo-brutalist utility classes */
+.neobrutal-card {
+    background: var(--panel-bg);
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px 0px 0px #000000;
+}
+
+.terminal-log {
+    background-color: #000000;
+    color: #10B981;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.terminal-log p {
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+}
+
+.terminal-log .token-hash {
+    color: #3B82F6;
+}
+
+.terminal-log .token-success {
+    color: #10B981;
+}
+
+.terminal-log .token-error {
+    color: #EF4444;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #60A5FA, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Educational instruction panels */
+.instructions-card {
+    background: rgba(13, 127, 242, 0.06);
+    border: 1px solid rgba(13, 127, 242, 0.2);
+    border-radius: 8px;
+    padding: 16px 20px;
+}
+
+.instructions-card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* Feature checklist items (ICMA features, regulatory checks) */
+.feature-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+}
+
+.feature-check .check-icon {
+    color: #3B82F6;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.feature-check .check-label {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.875rem;
+}
+
+.feature-check .check-desc {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* Pulsing badge animation */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+}
+
+.pulse-badge {
+    animation: pulse-glow 2s infinite;
+}
+
+/* Regulatory badge grid */
+.regulatory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.regulatory-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: rgba(16, 185, 129, 0.06);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-radius: 6px;
+}
+
+.regulatory-item .reg-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10B981;
+    flex-shrink: 0;
+}
+
+.regulatory-item .reg-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+.regulatory-item .reg-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
