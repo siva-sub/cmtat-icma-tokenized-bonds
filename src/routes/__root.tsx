@@ -197,7 +197,7 @@ function RootComponent() {
                     </Text>
                     <Group justify="flex-end">
                         <Button variant="default" onClick={closeReset}>Cancel</Button>
-                        <Button color="red" leftSection={<IconTrash size="1rem" />} onClick={() => { resetAll(); closeReset(); window.location.href = '/'; }}>Purge & Reset</Button>
+                        <Button color="red" leftSection={<IconTrash size="1rem" />} onClick={() => { resetAll(); closeReset(); window.location.href = import.meta.env.BASE_URL; }}>Purge & Reset</Button>
                     </Group>
                 </Modal>
 
