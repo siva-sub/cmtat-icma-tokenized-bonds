@@ -1,0 +1,4 @@
+[submodule "lib/cmtat"]
+	path = lib/cmtat
+	url = https://github.com/CMTA/CMTAT.git
+	branch = master
