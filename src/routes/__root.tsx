@@ -156,7 +156,10 @@ function RootComponent() {
                     borderRight: '1px solid var(--border-color)',
                     backgroundColor: 'var(--panel-bg)',
                     backdropFilter: 'blur(12px)',
-                    padding: '16px 12px',
+                    padding: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    overflow: 'hidden',
                 }
             }}
         >
@@ -188,54 +191,6 @@ function RootComponent() {
                     <Button fullWidth color="blue" onClick={handleCreateBond}>Create & Switch Context</Button>
                 </Modal>
 
-                <Box mb="sm" style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
-                    <Select
-                        label="Active Bond Context"
-                        data={bondOptions}
-                        value={activeBondId}
-                        onChange={(val) => { if (val) setActiveBond(val); }}
-                        variant="filled"
-                        size="sm"
-                        mb="sm"
-                        styles={{ label: { color: 'var(--text-muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 800, marginBottom: '8px' } }}
-                    />
-                    <Button fullWidth variant="light" color="blue" size="xs" onClick={openCreate}>
-                        + Track New Bond
-                    </Button>
-                </Box>
-
-                {/* Dashboard */}
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <NavLink
-                        component="div"
-                        label="Overview Dashboard"
-                        leftSection={<IconDashboard size="1.2rem" stroke={1.5} />}
-                        fw={700}
-                        c={currentPath === '/' ? 'var(--text-main)' : 'var(--text-muted)'}
-                        active={currentPath === '/'}
-                        variant="light"
-                        mb="xs"
-                    />
-                </Link>
-
-                {/* Bond Lifecycle Steps */}
-                <Text size="xs" tt="uppercase" fw={800} mb="sm" mt="md" c="var(--text-muted)" ff="JetBrains Mono" style={{ letterSpacing: '1px', paddingLeft: '12px' }}>
-                    Bond Lifecycle
-                </Text>
-
-                {LIFECYCLE_ORDER.map((step) => (
-                    <StepLink key={step} step={step} currentPath={currentPath} />
-                ))}
-
-                {/* Utility Section */}
-                <Text size="xs" tt="uppercase" fw={800} mb="sm" mt="lg" c="var(--text-muted)" ff="JetBrains Mono" style={{ letterSpacing: '1px', paddingLeft: '12px' }}>
-                    Tools
-                </Text>
-
-                <UtilityLink to="/inspector" label="ICMA Data Inspector" icon={<IconDatabaseSearch size="1.2rem" stroke={1.5} />} currentPath={currentPath} />
-                <UtilityLink to="/settings" label="Settings" icon={<IconSettingsSpark size="1.2rem" stroke={1.5} />} currentPath={currentPath} />
-
-                {/* Reset / Purge Demo */}
                 <Modal opened={resetModalOpen} onClose={closeReset} title="Reset Demo" centered size="sm">
                     <Text size="sm" c="var(--text-muted)" mb="lg">
                         This will clear all deployed contracts, step progress, and bond data. The in-memory EVM will be reset. You'll need to re-deploy from Step 1.
@@ -246,28 +201,79 @@ function RootComponent() {
                     </Group>
                 </Modal>
 
-                <Button
-                    fullWidth
-                    variant="subtle"
-                    color="red"
-                    size="xs"
-                    mt="md"
-                    leftSection={<IconTrash size="1rem" />}
-                    onClick={openReset}
-                >
-                    Reset Demo
-                </Button>
-
-                {/* Stale contracts warning */}
-                {hasStaleContracts && (
-                    <Box mt="sm" p="xs" style={{ backgroundColor: 'rgba(234,179,8,0.1)', borderRadius: '6px', border: '1px solid rgba(234,179,8,0.3)' }}>
-                        <Text size="xs" c="#EAB308" fw={600}>Contracts stale after refresh</Text>
-                        <Text size="xs" c="#EAB308" mt={2}>Re-deploy from <Link to="/setup" style={{ color: '#60A5FA', textDecoration: 'underline' }}>Step 1</Link> or <Text span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={openReset}>reset demo</Text>.</Text>
+                {/* Scrollable nav content */}
+                <Box style={{ flex: 1, overflowY: 'auto', padding: '16px 12px' }}>
+                    <Box mb="sm" style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
+                        <Select
+                            label="Active Bond Context"
+                            data={bondOptions}
+                            value={activeBondId}
+                            onChange={(val) => { if (val) setActiveBond(val); }}
+                            variant="filled"
+                            size="sm"
+                            mb="sm"
+                            styles={{ label: { color: 'var(--text-muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 800, marginBottom: '8px' } }}
+                        />
+                        <Button fullWidth variant="light" color="blue" size="xs" onClick={openCreate}>
+                            + Track New Bond
+                        </Button>
                     </Box>
-                )}
 
-                {/* User info at bottom */}
-                <Group style={{ marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid var(--border-color)' }} wrap="nowrap">
+                    {/* Dashboard */}
+                    <Link to="/" style={{ textDecoration: 'none' }}>
+                        <NavLink
+                            component="div"
+                            label="Overview Dashboard"
+                            leftSection={<IconDashboard size="1.2rem" stroke={1.5} />}
+                            fw={700}
+                            c={currentPath === '/' ? 'var(--text-main)' : 'var(--text-muted)'}
+                            active={currentPath === '/'}
+                            variant="light"
+                            mb="xs"
+                        />
+                    </Link>
+
+                    {/* Bond Lifecycle Steps */}
+                    <Text size="xs" tt="uppercase" fw={800} mb="sm" mt="md" c="var(--text-muted)" ff="JetBrains Mono" style={{ letterSpacing: '1px', paddingLeft: '12px' }}>
+                        Bond Lifecycle
+                    </Text>
+
+                    {LIFECYCLE_ORDER.map((step) => (
+                        <StepLink key={step} step={step} currentPath={currentPath} />
+                    ))}
+
+                    {/* Utility Section */}
+                    <Text size="xs" tt="uppercase" fw={800} mb="sm" mt="lg" c="var(--text-muted)" ff="JetBrains Mono" style={{ letterSpacing: '1px', paddingLeft: '12px' }}>
+                        Tools
+                    </Text>
+
+                    <UtilityLink to="/inspector" label="ICMA Data Inspector" icon={<IconDatabaseSearch size="1.2rem" stroke={1.5} />} currentPath={currentPath} />
+                    <UtilityLink to="/settings" label="Settings" icon={<IconSettingsSpark size="1.2rem" stroke={1.5} />} currentPath={currentPath} />
+
+                    {/* Reset / Purge Demo */}
+                    <Button
+                        fullWidth
+                        variant="subtle"
+                        color="red"
+                        size="xs"
+                        mt="md"
+                        leftSection={<IconTrash size="1rem" />}
+                        onClick={openReset}
+                    >
+                        Reset Demo
+                    </Button>
+
+                    {/* Stale contracts warning */}
+                    {hasStaleContracts && (
+                        <Box mt="sm" p="xs" style={{ backgroundColor: 'rgba(234,179,8,0.1)', borderRadius: '6px', border: '1px solid rgba(234,179,8,0.3)' }}>
+                            <Text size="xs" c="#EAB308" fw={600}>Contracts stale after refresh</Text>
+                            <Text size="xs" c="#EAB308" mt={2}>Re-deploy from <Link to="/setup" style={{ color: '#60A5FA', textDecoration: 'underline' }}>Step 1</Link> or <Text span style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={openReset}>reset demo</Text>.</Text>
+                        </Box>
+                    )}
+                </Box>
+
+                {/* User info pinned at bottom */}
+                <Group style={{ padding: '12px', borderTop: '1px solid var(--border-color)', flexShrink: 0 }} wrap="nowrap">
                     <Avatar color="accent" radius="xl">SO</Avatar>
                     <div>
                         <Text size="sm" fw={700} c="var(--text-main)">Sandbox Operator</Text>
