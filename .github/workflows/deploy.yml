@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Compile Solidity contracts
+        run: npx hardhat compile
+
       - name: Build
         run: npm run build
 
