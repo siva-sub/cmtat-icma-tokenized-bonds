@@ -12,7 +12,7 @@ This project demonstrates the integration of two industry standards for tokenize
 
 | Standard | Role |
 |----------|------|
-| **CMTAT v3.0** (Swiss Capital Markets & Technology Association) | Modular ERC-20 smart contract framework with compliance modules |
+| **CMTAT** (Swiss Capital Markets & Technology Association) | Modular ERC-20 smart contract framework with compliance modules |
 | **ICMA Bond Data Taxonomy v1.2** (International Capital Market Association) | Machine-readable schema of 90+ fields covering the full bond term sheet |
 
 The architecture follows the **MAS Guardian Fixed Income Framework** (Singapore, Nov 2024) — the first industry guide specifically for tokenized debt capital markets.
@@ -113,12 +113,39 @@ npm run build
 - Node.js 20+
 - npm 10+
 
+## About
+
+This project was developed by **Sivasubramanian Ramanathan**, former Product Owner at the **Bank for International Settlements (BIS)**. Having worked extensively in central banking and financial infrastructure, I became deeply curious about emerging standards in tokenized finance, particularly:
+
+- **ICMA Bond Data Taxonomy (BDT)** — The industry standard for bond data classification
+- **CMTAT Framework** — Ethereum-based token standard for compliant securities
+- **MAS Project Guardian** — Singapore's DeFi experimentation framework
+- **Global Layer 1 Guardian Fixed Income Framework** — Cross-border tokenized securities infrastructure
+
+This platform demonstrates how these standards can work together to create a production-ready tokenized fixed income trading environment.
+
+## Project Vision
+
+Tokenized fixed-income instruments represent a generational shift in capital markets infrastructure. By encoding bond term sheets on-chain using the **ICMA Bond Data Taxonomy** and managing token lifecycle compliance through **CMTAT**, this sandbox proves that traditional debt instruments can be fully represented, issued, traded, and redeemed in a standards-compliant digital environment — entirely client-side, with no backend infrastructure required.
+
+The goal is to bridge the gap between traditional fixed-income workflows and decentralized infrastructure, showing that institutional-grade compliance and regulatory frameworks (KYC/AML, transfer restrictions, enforcement actions) can coexist with the transparency and programmability of public blockchains.
+
 ## Standards References
 
 - [MAS Project Guardian — Fixed Income Framework](https://www.mas.gov.sg/schemes-and-initiatives/project-guardian) (Nov 2024)
 - [ICMA Bond Data Taxonomy v1.2](https://www.icmagroup.org/market-practice-and-regulatory-policy/secondary-markets/bond-market-transparency/icma-bond-data-taxonomy/)
 - [CMTAT Standard](https://github.com/CMTA/CMTAT) — Capital Markets and Technology Association (Swiss)
 - [GFMA Tokenization Design Principles](https://www.gfma.org/policies-resources/gfma-tokenization-design-principles/)
+
+## Contact
+
+**Sivasubramanian Ramanathan**
+Former Product Owner, Bank for International Settlements (BIS)
+
+Specialized in central banking innovation, financial infrastructure, and emerging tokenization standards. This project represents a deep exploration into how traditional fixed income markets can evolve through standards-based tokenization frameworks like CMTAT and ICMA BDT.
+
+- **Email:** [hello@sivasub.com](mailto:hello@sivasub.com)
+- **LinkedIn:** [sivasub987](https://www.linkedin.com/in/sivasub987)
 
 ## License
 
